@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.label import Label
 
+
 class calculadoraApp(App):
     def calcular(self):
         try:
@@ -14,7 +15,8 @@ class calculadoraApp(App):
             self.root.ids.label.text = resultado
         else:
             self.root.ids.label.text = "Error"
-            self.root.ids.label.color = 1, 0, 0, 1  # Color rojo en formato RGBA
+            self.root.ids.label.color = 1, 0, 0, 1
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     calculadoraApp().run()
