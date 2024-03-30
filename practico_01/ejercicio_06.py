@@ -7,7 +7,9 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
     """Toma una lista de enteros y strings y devuelve una lista con todos los
     elementos numéricos al final.
     """
-    pass # Completar
+    letras = [elem for elem in lista if isinstance(elem, str) and elem.isalpha()]
+    numeros = [elem for elem in lista if isinstance(elem, (int, float))]
+    return letras + numeros
 
 
 # NO MODIFICAR - INICIO
@@ -20,7 +22,9 @@ assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 
 
 def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Re-escribir utilizando comprensión de listas."""
-    pass # Completar
+    letras = [elem for elem in lista if isinstance(elem, str) and elem.isalpha()]
+    numeros = [elem for elem in lista if isinstance(elem, (int, float))]
+    return letras + numeros
 
 
 # NO MODIFICAR - INICIO
@@ -35,7 +39,13 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    pass # Completar
+     def clave(elem):
+        if isinstance(elem,str):
+            return (0, elem)
+        else:
+            return (1, elem)
+    rta = sorted(lista, key=clave)
+    return rta
 
 
 # NO MODIFICAR - INICIO
@@ -50,7 +60,21 @@ def numeros_al_final_filter(lista: List[Union[float, str]]) -> List[Union[float,
     """CHALLENGE OPCIONAL - Re-escribir utilizando la función filter.
     Referencia: https://docs.python.org/3/library/functions.html#filter
     """
-    pass # Completar
+    def letras(elem):
+        if isinstance(elem, str) and elem.isalpha():
+            return True
+        else:
+            return False
+    def numeros(elem):
+        if isinstance(elem, (int, float)):
+            return True
+        else:
+            return False
+    solo_letras = list(filter(letras, lista))
+    nros = list(filter(numeros, lista))
+    rta = solo_letras + nros
+    return rta
+
 
 
 # NO MODIFICAR - INICIO
