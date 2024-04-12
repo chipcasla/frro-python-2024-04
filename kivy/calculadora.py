@@ -17,6 +17,6 @@ class calculadoraApp(App):
             self.root.ids.label.text = "Error"
             self.root.ids.label.color = 1, 0, 0, 1
 
-
+#clase ppal
 if __name__ == "__main__":
     calculadoraApp().run()
