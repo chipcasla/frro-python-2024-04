@@ -19,11 +19,81 @@ ScreenManager:
                 pos_hint: {'center_x': 0.5, 'center_y': 0.7}
             Spinner:
                 text: "Menu"
-                values: ["Futbol", "Recetas", "Materias", "Lenguajes"]
-                size_hint: (None, None)
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                size: (150, 50)
+                values: "Futbol", "Recetas","Materias","Lenguajes"
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': .5 }
+                size: (150,50)
                 on_text: app.root.current = self.text
+
+    Screen:
+        name: "Lenguajes"
+        BoxLayout:
+            padding: 5
+            spacing: 5
+            orientation: "vertical"
+            canvas:
+                Color:
+                    rgba: 0, 1, 1, 0.6
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            Label:
+                text: "Lenguajes"
+                font_size: 32
+                color: 0,0,0,1
+                pos_hint: { 'center_x': .5,'center_y': 0.9 }
+            Spinner:
+                id: lenguaje_spinner
+                text: "Menu"
+                values: "Javascript", "Golang", "Python", "C#"
+                size_hint: (None,None)
+                pos_hint: { 'center_x': .5,'center_y': .5 }
+                size: (150,50)
+                on_text: 
+                    if self.text == 'Golang': label_nombreLenguaje.text = "Golang"; label_descripcionLenguaje.text = "Go es un lenguaje de programación concurrente y compilado inspirado en la sintaxis de C."
+                    elif self.text == 'Javascript': label_nombreLenguaje.text = "Javascript"; label_descripcionLenguaje.text = "JavaScript es un lenguaje de programación interpretado de alto nivel."
+                    elif self.text == 'Python': label_nombreLenguaje.text = "Python"; label_descripcionLenguaje.text = "Python es un lenguaje de programación interpretado de alto nivel y propósito general."
+                    elif self.text == 'C#': label_nombreLenguaje.text = "C#"; label_descripcionLenguaje.text = "C# es un lenguaje de programación multiparadigma desarrollado por Microsoft."
+            
+            BoxLayout:
+                orientation: "vertical"
+                canvas:
+                    Color:
+                        rgba: 0, 0.4, 1, 1
+                BoxLayout:
+                    orientation: "horizontal"
+                    Label:
+                        text: "Nombre: "
+                        font_size: 20
+                        color: 0,0,0,1
+                        pos_hint: {'center_x': 0.3, 'center_y': 0.7}
+                    Label:
+                        id: label_nombreLenguaje
+                        text: ""
+                        font_size: 16
+                        color: (0, 0, 0, 1)
+                        size_hint: (None, None)
+                        text_size: self.width, None  
+                        width: 380 
+                        halign: "left"
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                BoxLayout:
+                    orientation: "horizontal"
+                    Label:
+                        text: "Descripcion: "
+                        font_size: 20
+                        color: 0,0,0,1
+                        size_hint: (0.3, None)
+                    Label:
+                        id: label_descripcionLenguaje
+                        font_size: 16
+                        color: (0, 0, 0, 1)
+                        size_hint: (None, None)
+                        text_size: self.width, None  
+                        width: 380 
+                        halign: "left"
+                        pos_hint: { 'center_x': 0.3 }  # Mueve el Label más a la izquierda
+
     Screen:
         name: "Materias"
         FloatLayout:
@@ -59,5 +129,4 @@ ScreenManager:
                 pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                 height: self.texture_size[1] 
                 width: 400  # Ancho fijo
-
 
