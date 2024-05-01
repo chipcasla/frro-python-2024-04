@@ -1,3 +1,7 @@
+<InfoRecetas@Label>:
+    opacity: 0
+
+
 ScreenManager:
     Screen:
         name: "menu"
@@ -19,7 +23,6 @@ ScreenManager:
                 pos_hint: {'center_x': 0.5, 'center_y': 0.7}
             Spinner:
                 text: "Menu"
-<<<<<<< HEAD
                 values: "Futbol", "Recetas","Materias","Lenguajes"
                 size_hint:(None,None)
                 pos_hint: { 'center_x': .5,'center_y': .5 }
@@ -51,7 +54,8 @@ ScreenManager:
                 size_hint:(None,None)
                 pos_hint: { 'center_x': .5,'center_y': .7 }
                 size: (250,50)
-                on_text: app.update_labels()
+                on_text: 
+                    app.update_labels(); inicial_label.opacity = 0; InfoRecetas.opacity = 1
             BoxLayout:
                 size_hint:(0.5,0.6)
                 orientation: "vertical"
@@ -60,30 +64,21 @@ ScreenManager:
                     id: inicial_label
                     text: "Seleccione una receta para ver su informacion"
                     hidden: "False"
-                Label:
+                InfoRecetas:
                     id: nombre_label
                     text:"Nombre:"
-                    opacity: 0
-                Label:
+                InfoRecetas:
                     id: ingredientes_label
                     text:"Ingredientes:"
-                Label:
+                InfoRecetas:
                     id:  paso_a_paso_label
                     text:"Paso a paso:"
-                Label:
+                InfoRecetas:
                     id: porciones_label
                     text:"Porciones:"
-                Label:
+                InfoRecetas:
                     id: duracion_label
                     text:"Duracion:"
-=======
-            Spinner:
-                id: materia_spinner
-                values: ["Futbol", "Recetas", "Materias", "Lenguajes"]
-                size_hint: (None, None)
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                size: (150, 50)
-                on_text: app.root.current = self.text
     Screen:
         name: "Materias"
         FloatLayout:
@@ -119,6 +114,4 @@ ScreenManager:
                 pos_hint: {'center_x': 0.5, 'center_y': 0.4}
                 height: self.texture_size[1] 
                 width: 400  # Ancho fijo
-
->>>>>>> 3a201e41c5f907f15dc2bdf1d7d24e5f100bc2e7
-
+        
