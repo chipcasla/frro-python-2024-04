@@ -196,5 +196,41 @@ ScreenManager:
                 text_size: self.width, None  
                 height: self.texture_size[1] 
                 width: 400  # Ancho fijo
-        
 
+    Screen:
+        name: "Futbol"
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 5
+            canvas:
+                Color:
+                    rgba: 0, 1, 0.2, 0.2
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            
+            Label:
+                text: "FÚTBOL"
+                font_size: "32sp"
+                bold: True
+                color: 0.8, 0.8, 0.8, 1
+                pos_hint: {'top':1}
+
+            Label:
+                text: "Seleccione un equipo:"
+                size_hint_y: None
+
+            Spinner:
+                id: spinner
+                text: "Equipos"
+                values: ["San Lorenzo", "Independiente", "River"]        
+                size_hint: (None,None)            
+                size: (350,50)
+                pos_hint: { 'center_x': .5 ,'center_y': .5 }
+                on_text: info_label.text = "\n".join([f"{key}: {value}\n" for key, value in app.info_futbol[self.text].items()])
+
+            Label:
+                id: info_label
+                text: "Seleccione un equipo para ver su información..."
+                halign: "center"
+                multiline: True
