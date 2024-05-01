@@ -1,8 +1,8 @@
 from kivy.app import App
-from kivy.uix.screenmanager import Screen
 
 
 class spinnerApp(App):
+
     info_futbol = {
         "San Lorenzo": {
             "Fundación": "1908",
