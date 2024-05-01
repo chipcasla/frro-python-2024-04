@@ -26,6 +26,73 @@ ScreenManager:
                 on_text: app.root.current = self.text
 
     Screen:
+        name: "Recetas"
+        FloatLayout:
+            padding: 5
+            spacing: 2
+            orientation: "vertical"
+            Label:
+                text: "Recetas"
+                font_size: 32
+                color: 1,1,1,1
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': 0.9 }
+            Label:
+                text: "Elija una receta"
+                font_size: 20
+                color: 1,1,1,1
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': 0.8 }
+            Spinner:
+                id: receta_spinner
+                text: "Recetas"
+                values: "Pollo al disco","Pizza casera","Milanesas con pure","Tallarines caseros"
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': .7 }
+                size: (250,50)
+                on_text: 
+                    app.update_labels(); inicial_label.opacity = 0; nombre_label.opacity = 1; ingredientes_label.opacity= 1; paso_a_paso_label.opacity = 1; porciones_label.opacity = 1; duracion_label.opacity = 1
+            BoxLayout:
+                size_hint:(0.5,None)
+                spacing: 60
+                padding: 10
+                orientation: "vertical"
+                pos_hint: { 'center_x': .5,'center_y': 0.2 }
+                halign: "center"
+                valign: "center"
+                Label:
+                    id: inicial_label
+                    text: "Seleccione una receta para ver su informacion"
+                Label:
+                    id: nombre_label
+                    text:"Nombre:"
+                    opacity: 0
+                    halign: "center"      
+                Label:
+                    id: ingredientes_label
+                    text:"Ingredientes:"
+                    opacity: 0
+                    halign: "center"
+                Label:
+                    id:  paso_a_paso_label
+                    text:"Paso a paso:"
+                    opacity: 0
+                    halign: "center"
+                    text_size: root.width, None
+                Label:
+                    id: porciones_label
+                    text:"Porciones:"
+                    opacity: 0
+                    halign: "center"
+                    
+                Label:
+                    id: duracion_label
+                    text:"Duracion:"
+                    opacity: 0
+                    halign: "center"
+                    
+
+    Screen:    
         name: "Lenguajes"
         BoxLayout:
             padding: 5
@@ -125,8 +192,9 @@ ScreenManager:
                 color: (1, 1, 1, 1)
                 size_hint: (None, None)
                 size_hint_y: None
-                text_size: self.width, None  
                 pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                text_size: self.width, None  
                 height: self.texture_size[1] 
                 width: 400  # Ancho fijo
+        
 
