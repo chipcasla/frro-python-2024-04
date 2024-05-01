@@ -1,6 +1,4 @@
-
-
-ScreenManager
+ScreenManager:
     Screen:
         name: "menu"
         FloatLayout:
@@ -17,64 +15,12 @@ ScreenManager
                 text: "Menu Principal"
                 font_size: 32
                 color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.7 }
+                size_hint: (None, None)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
             Spinner:
                 text: "Menu"
                 values: "Futbol", "Recetas","Materias","Lenguajes"
                 size_hint:(None,None)
                 pos_hint: { 'center_x': .5,'center_y': .5 }
                 size: (150,50)
-                on_text: app.root.current = self.text
-
-    Screen:
-        name: "Recetas"
-        FloatLayout:
-            padding: 5
-            spacing: 2
-            orientation: "vertical"
-            Label:
-                text: "Recetas"
-                font_size: 32
-                color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.9 }
-            Label:
-                text: "Elija una receta"
-                font_size: 20
-                color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.8 }
-            Spinner:
-                id: receta_spinner
-                text: "Recetas"
-                values: "Pollo al disco","Pizza casera","Milanesas con pure","Tallarines caseros"
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': .7 }
-                size: (250,50)
-                on_text: app.update_labels()
-            BoxLayout:
-                size_hint:(0.5,0.6)
-                orientation: "vertical"
-                pos_hint: { 'center_x': .5,'center_y': 0.4 }
-                Label:
-                    id: inicial_label
-                    text: "Seleccione una receta para ver su informacion"
-                    hidden: "False"
-                Label:
-                    id: nombre_label
-                    text:"Nombre:"
-                    opacity: 0
-                Label:
-                    id: ingredientes_label
-                    text:"Ingredientes:"
-                Label:
-                    id:  paso_a_paso_label
-                    text:"Paso a paso:"
-                Label:
-                    id: porciones_label
-                    text:"Porciones:"
-                Label:
-                    id: duracion_label
-                    text:"Duracion:"
 
