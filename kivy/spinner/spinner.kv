@@ -12,86 +12,30 @@ ScreenManager:
                     pos:self.pos
                     size:self.size
             Label:
-                text: "Menu Principal"
-                font_size: 32
+                text: "SPINNER"
+                font_size: 46
+                color: 1,1, 11/255,1
+                italic: True
+                size_hint: (None, None)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            Label:
+                text: "Esto es un spinner. El Spinner es un widget que proporciona una forma rápida de seleccionar un valor de un conjunto. En su estado predeterminado, un spinner muestra su valor actualmente seleccionado. Al tocar el spinner, se muestra un menú desplegable con todos los otros valores disponibles, entre los cuales el usuario puede seleccionar uno nuevo."
+                font_size: 24
                 color: 1,1,1,1
                 size_hint: (None, None)
-                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                text_size: self.width, None  
+                width: 900 
+                halign: "center"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.6}
             Spinner:
                 text: "Menu"
-                values: "Futbol", "Recetas","Materias","Lenguajes"
+                values: "Futbol","Materias","Lenguajes"
                 size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': .5 }
+                pos_hint: { 'center_x': .5,'center_y': .4 }
                 size: (150,50)
-                on_text: app.root.current = self.text
-
-    Screen:
-        name: "Recetas"
-        FloatLayout:
-            padding: 5
-            spacing: 2
-            orientation: "vertical"
-            Label:
-                text: "Recetas"
-                font_size: 32
-                color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.9 }
-            Label:
-                text: "Elija una receta"
-                font_size: 20
-                color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.8 }
-            Spinner:
-                id: receta_spinner
-                text: "Recetas"
-                values: "Pollo al disco","Pizza casera","Milanesas con pure","Tallarines caseros"
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': .7 }
-                size: (250,50)
                 on_text: 
-                    app.update_labels(); inicial_label.opacity = 0; nombre_label.opacity = 1; ingredientes_label.opacity= 1; paso_a_paso_label.opacity = 1; porciones_label.opacity = 1; duracion_label.opacity = 1
-            BoxLayout:
-                size_hint:(0.5,None)
-                spacing: 60
-                padding: 10
-                orientation: "vertical"
-                pos_hint: { 'center_x': .5,'center_y': 0.2 }
-                halign: "center"
-                valign: "center"
-                Label:
-                    id: inicial_label
-                    text: "Seleccione una receta para ver su informacion"
-                Label:
-                    id: nombre_label
-                    text:"Nombre:"
-                    opacity: 0
-                    halign: "center"      
-                Label:
-                    id: ingredientes_label
-                    text:"Ingredientes:"
-                    opacity: 0
-                    halign: "center"
-                Label:
-                    id:  paso_a_paso_label
-                    text:"Paso a paso:"
-                    opacity: 0
-                    halign: "center"
-                    text_size: root.width, None
-                Label:
-                    id: porciones_label
-                    text:"Porciones:"
-                    opacity: 0
-                    halign: "center"
-                    
-                Label:
-                    id: duracion_label
-                    text:"Duracion:"
-                    opacity: 0
-                    halign: "center"
-                    
-
+                    root.transition.direction = "left"
+                    app.root.current = self.text
     Screen:    
         name: "Lenguajes"
         BoxLayout:
@@ -100,7 +44,7 @@ ScreenManager:
             orientation: "vertical"
             canvas:
                 Color:
-                    rgba: 0, 1, 1, 0.6
+                    rgba: 0, 1, 1, 0.4
                 Rectangle:
                     pos:self.pos
                     size:self.size
@@ -111,7 +55,7 @@ ScreenManager:
                 pos_hint: { 'center_x': .5,'center_y': 0.9 }
             Spinner:
                 id: lenguaje_spinner
-                text: "Menu"
+                text: "Lenguajes"
                 values: "Javascript", "Golang", "Python", "C#"
                 size_hint: (None,None)
                 pos_hint: { 'center_x': .5,'center_y': .5 }
@@ -137,13 +81,13 @@ ScreenManager:
                     Label:
                         id: label_nombreLenguaje
                         text: ""
-                        font_size: 16
+                        font_size: 20
                         color: (0, 0, 0, 1)
                         size_hint: (None, None)
                         text_size: self.width, None  
                         width: 380 
                         halign: "left"
-                        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                        pos_hint: {'center_x': 0, 'center_y': 0.7}
                 BoxLayout:
                     orientation: "horizontal"
                     Label:
@@ -151,6 +95,7 @@ ScreenManager:
                         font_size: 20
                         color: 0,0,0,1
                         size_hint: (0.3, None)
+                        halign: "left"
                     Label:
                         id: label_descripcionLenguaje
                         font_size: 16
@@ -159,17 +104,26 @@ ScreenManager:
                         text_size: self.width, None  
                         width: 380 
                         halign: "left"
-                        pos_hint: { 'center_x': 0.3 }  # Mueve el Label más a la izquierda
+                        pos_hint: { 'center_x': 0.2 }  # Mueve el Label más a la izquierda
+            Button:
+                id: back_button
+                text: "Atras"
+                size_hint: (None, None) 
+                size: (80,50) 
+                pos_hint: {'center_x': 0.1, 'center_y':0.1}
+                on_press:
+                    root.transition.direction = "down"
+                    root.current = "menu"
 
     Screen:
         name: "Materias"
         FloatLayout:
             padding: 5
-            spacing: 5
+            spacing: 7
             orientation: "vertical"
             canvas:
                 Color:
-                    rgba: (0, 0, 0, 1)
+                    rgba: 33/255, 51/255,86/255, 0.8
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -196,6 +150,15 @@ ScreenManager:
                 text_size: self.width, None  
                 height: self.texture_size[1] 
                 width: 400  # Ancho fijo
+            Button:
+                id: back_button
+                text: "Atras"
+                size_hint: (None, None) 
+                size: (80,50) 
+                pos_hint: {'center_x': 0.1, 'center_y':0.1}
+                on_press:
+                    root.transition.direction = "down"
+                    root.current = "menu"
 
     Screen:
         name: "Futbol"
@@ -234,3 +197,12 @@ ScreenManager:
                 text: "Seleccione un equipo para ver su información..."
                 halign: "center"
                 multiline: True
+            Button:
+                id: back_button
+                text: "Atras"
+                size_hint: (None, None) 
+                size: (80,50) 
+                pos_hint: {'center_x': 0.1, 'center_y':0.2}
+                on_press:
+                    root.transition.direction = "down"
+                    root.current = "menu"
