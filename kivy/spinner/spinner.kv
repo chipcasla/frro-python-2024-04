@@ -19,8 +19,106 @@ ScreenManager:
                 pos_hint: {'center_x': 0.5, 'center_y': 0.7}
             Spinner:
                 text: "Menu"
+<<<<<<< HEAD
                 values: "Futbol", "Recetas","Materias","Lenguajes"
                 size_hint:(None,None)
                 pos_hint: { 'center_x': .5,'center_y': .5 }
                 size: (150,50)
+                on_text: app.root.current = self.text
+
+    Screen:
+        name: "Recetas"
+        FloatLayout:
+            padding: 5
+            spacing: 2
+            orientation: "vertical"
+            Label:
+                text: "Recetas"
+                font_size: 32
+                color: 1,1,1,1
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': 0.9 }
+            Label:
+                text: "Elija una receta"
+                font_size: 20
+                color: 1,1,1,1
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': 0.8 }
+            Spinner:
+                id: receta_spinner
+                text: "Recetas"
+                values: "Pollo al disco","Pizza casera","Milanesas con pure","Tallarines caseros"
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': .7 }
+                size: (250,50)
+                on_text: app.update_labels()
+            BoxLayout:
+                size_hint:(0.5,0.6)
+                orientation: "vertical"
+                pos_hint: { 'center_x': .5,'center_y': 0.4 }
+                Label:
+                    id: inicial_label
+                    text: "Seleccione una receta para ver su informacion"
+                    hidden: "False"
+                Label:
+                    id: nombre_label
+                    text:"Nombre:"
+                    opacity: 0
+                Label:
+                    id: ingredientes_label
+                    text:"Ingredientes:"
+                Label:
+                    id:  paso_a_paso_label
+                    text:"Paso a paso:"
+                Label:
+                    id: porciones_label
+                    text:"Porciones:"
+                Label:
+                    id: duracion_label
+                    text:"Duracion:"
+=======
+            Spinner:
+                id: materia_spinner
+                values: ["Futbol", "Recetas", "Materias", "Lenguajes"]
+                size_hint: (None, None)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                size: (150, 50)
+                on_text: app.root.current = self.text
+    Screen:
+        name: "Materias"
+        FloatLayout:
+            padding: 5
+            spacing: 5
+            orientation: "vertical"
+            canvas:
+                Color:
+                    rgba: (0, 0, 0, 1)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Label:
+                text: "Materias"
+                font_size: 32
+                color: (1, 1, 1, 1)
+                size_hint: (None, None)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            Spinner:
+                id: materia_spinner
+                text: "Selecciona una materia"
+                values: ["Matematica superior", "Gestion de datos", "Administracion de recursos"]
+                size_hint: (None, None)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+                size: (225, 50)
+            Label:
+                text: "" + (materia_spinner.text if materia_spinner.text != 'Selecciona una materia' else 'Selecciona una materia para ver el resumen') + "\n" + ("Nivel: Tercer año \nDescripción: Matemática Superior se enfoca en conceptos avanzados de matemáticas que incluyen cálculo integral y diferencial, teoría de ecuaciones, análisis complejo y métodos numéricos. Está diseñada para profundizar los conocimientos matemáticos y desarrollar habilidades analíticas críticas necesarias en campos técnicos y científicos." if materia_spinner.text == "Matematica superior" else "Nivel: Tercer año (3er)\nDescripción: Gestión de Datos estudia los principios y técnicas para la gestión eficaz de datos. Incluye temas como bases de datos, almacenamiento y recuperación de información, seguridad de datos, y uso de sistemas de gestión de bases de datos. Los estudiantes aprenden a diseñar, implementar y gestionar sistemas de bases de datos eficientes y seguros." if materia_spinner.text == "Gestion de datos" else "Nivel: Cuarto año (4to)\nDescripción: Administración de Recursos cubre las estrategias y técnicas para la gestión eficiente de recursos en organizaciones. Se enfoca en la planificación, asignación y optimización de recursos humanos, financieros y materiales. Los estudiantes aprenden sobre la toma de decisiones estratégicas, gestión de proyectos y evaluación del desempeño organizacional." if materia_spinner.text == "Administracion de recursos" else "")
+                font_size: 20
+                color: (1, 1, 1, 1)
+                size_hint: (None, None)
+                size_hint_y: None
+                text_size: self.width, None  
+                pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+                height: self.texture_size[1] 
+                width: 400  # Ancho fijo
+
+>>>>>>> 3a201e41c5f907f15dc2bdf1d7d24e5f100bc2e7
 
