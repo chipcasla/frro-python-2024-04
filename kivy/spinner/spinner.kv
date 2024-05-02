@@ -27,69 +27,86 @@ ScreenManager:
 
     Screen:
         name: "Recetas"
+        canvas:
+            Color:
+                rgba: 1, 0.7, 0.1, 0.8
+            Rectangle:
+                pos:self.pos
+                size:self.size
         FloatLayout:
-            padding: 5
-            spacing: 2
+            padding: dp(10)  # Usamos dp() para proporcionar un padding relativo
             orientation: "vertical"
+
             Label:
                 text: "Recetas"
-                font_size: 32
-                color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.9 }
+                font_size: sp(38)
+                bold: True
+                color: 0, 0, 0, 1
+                size_hint_y: None
+                height: self.texture_size[1]  # Ajustamos la altura según el tamaño del texto
+                pos_hint: { 'center_x': .5, 'top': 0.9 }  # Centramos verticalmente respecto al top
+
             Label:
                 text: "Elija una receta"
-                font_size: 20
-                color: 1,1,1,1
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': 0.8 }
+                font_size: sp(20)
+                color: 0.2, 0.2, 0.2, 0.7
+                size_hint_y: None
+                height: self.texture_size[1]
+                pos_hint: { 'center_x': .5, 'top': 0.8 }
+
             Spinner:
                 id: receta_spinner
                 text: "Recetas"
-                values: "Pollo al disco","Pizza casera","Milanesas con pure","Tallarines caseros"
-                size_hint:(None,None)
-                pos_hint: { 'center_x': .5,'center_y': .7 }
-                size: (250,50)
+                values: "Pollo al disco", "Pizza casera", "Milanesas con pure", "Tallarines caseros"
+                size_hint: (0.6, 0.1)
+                pos_hint: { 'center_x': .5, 'top': 0.7 }
+                background_color: 0,0,0,1
                 on_text: 
-                    app.update_labels(); inicial_label.opacity = 0; nombre_label.opacity = 1; ingredientes_label.opacity= 1; paso_a_paso_label.opacity = 1; porciones_label.opacity = 1; duracion_label.opacity = 1
-            BoxLayout:
-                size_hint:(0.5,None)
-                spacing: 60
-                padding: 10
-                orientation: "vertical"
-                pos_hint: { 'center_x': .5,'center_y': 0.2 }
-                halign: "center"
-                valign: "center"
-                Label:
-                    id: inicial_label
-                    text: "Seleccione una receta para ver su informacion"
+                    app.update_labels()
+                    nombre_label.opacity = 1
+                    ingredientes_label.opacity = 1
+                    paso_a_paso_label.opacity = 1
+                    porciones_label.opacity = 1
+                    duracion_label.opacity = 1
+
+            GridLayout:
+                cols: 1
+                spacing: dp(5)  # Usamos dp() para proporcionar un espaciado relativo
+                padding: dp(5)
+                size_hint_y: 0.6
+                height: root.height
+                pos_hint: { 'center_x': .5, 'top': 0.6 }
+
                 Label:
                     id: nombre_label
-                    text:"Nombre:"
+                    text: "Nombre:"
                     opacity: 0
-                    halign: "center"      
+                    halign: 'center'
+
                 Label:
                     id: ingredientes_label
-                    text:"Ingredientes:"
+                    text: "Ingredientes:"
                     opacity: 0
-                    halign: "center"
+                    halign: 'center'
+
                 Label:
-                    id:  paso_a_paso_label
-                    text:"Paso a paso:"
+                    id: paso_a_paso_label
+                    text: "Paso a paso:"
                     opacity: 0
-                    halign: "center"
-                    text_size: root.width, None
+                    halign: 'center'
+                    text_size: (root.width * 0.7, None)
+
                 Label:
                     id: porciones_label
-                    text:"Porciones:"
+                    text: "Porciones:"
                     opacity: 0
-                    halign: "center"
-                    
+                    halign: 'center'
+
                 Label:
                     id: duracion_label
-                    text:"Duracion:"
+                    text: "Duracion:"
                     opacity: 0
-                    halign: "center"
+                    halign: 'center'
                     
 
     Screen:    
@@ -163,20 +180,21 @@ ScreenManager:
 
     Screen:
         name: "Materias"
+        canvas:
+            Color:
+                rgba: 0.1, 0.1, 0.3, 0.8
+            Rectangle:
+                pos:self.pos
+                size:self.size
         FloatLayout:
             padding: 5
             spacing: 5
             orientation: "vertical"
-            canvas:
-                Color:
-                    rgba: (0, 0, 0, 1)
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
             Label:
                 text: "Materias"
-                font_size: 32
+                font_size: 38
                 color: (1, 1, 1, 1)
+                bold: True
                 size_hint: (None, None)
                 pos_hint: {'center_x': 0.5, 'center_y': 0.8}
             Spinner:
@@ -184,6 +202,8 @@ ScreenManager:
                 text: "Selecciona una materia"
                 values: ["Matematica superior", "Gestion de datos", "Administracion de recursos"]
                 size_hint: (None, None)
+                color: 0,0,0,1
+                background_color: 1,0.9,1,1
                 pos_hint: {'center_x': 0.5, 'center_y': 0.7}
                 size: (225, 50)
             Label:
