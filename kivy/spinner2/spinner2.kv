@@ -1,0 +1,46 @@
+ScreenManager:
+    Screen:
+        name: "Menu"
+        FloatLayout:
+            padding: 5
+            spacing: 10
+            orientation: "vertical"
+            canvas:
+                Color:
+                    rgb:[0,0,0]
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            Label:
+                text: "SPINNER"
+                font_size: 46
+                color: 1,1, 11/255,1
+                italic: True
+                size_hint: (None, None)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            Label:
+                text: "Esto es un spinner. El Spinner es un widget que proporciona una forma rápida de seleccionar un valor de un conjunto. En su estado predeterminado, un spinner muestra su valor actualmente seleccionado. Al tocar el spinner, se muestra un menú desplegable con todos los otros valores disponibles, entre los cuales el usuario puede seleccionar uno nuevo."
+                font_size: 24
+                color: 1,1,1,1
+                size_hint: (None, None)
+                text_size: root.width*0.9, None  
+                halign: "center"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            Spinner:
+                id: main_spinner
+                text: "Menu"
+                values: "Valor1","Valor2","Valor3","Valor4"
+                size_hint:(None,None)
+                pos_hint: { 'center_x': .5,'center_y': .45 }
+                size: (150,50)
+                on_text:
+                    opcion.text = self.text
+            Label:
+                id: opcion
+                text: ""
+                font_size: 24
+                color: 1,1, 11/255,1
+                size_hint: (None, None)
+                text_size: root.width*0.9, None
+                halign: "center"
+                pos_hint: {'center_x': 0.5, 'center_y': 0.05}
