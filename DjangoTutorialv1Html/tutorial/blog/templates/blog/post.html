@@ -1,0 +1,20 @@
+
+{% extends 'blog/base.html' %}
+
+{% block title %} {{ post.title }} · Blog{% endblock %}
+
+{% block content %}
+
+
+        <div>
+            <h3>{{ post.title }}</h3>
+            <span class="date">{{ post.created }}</span>
+            <p>{{ post.content }}</p>
+            <a href="/">Volver a la portada</a>
+            {% if user.is_authenticated and user.is_staff %}
+            <p>
+            <a href="{% url 'admin:blog_post_change' post.id %}" class="edit">Editar entrada</a>
+            </p>
+            {% endif %}
+        </div>
+{% endblock %}

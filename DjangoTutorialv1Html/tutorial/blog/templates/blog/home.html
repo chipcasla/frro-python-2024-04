@@ -1,0 +1,13 @@
+
+{% extends 'blog/base.html' %}
+
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+        {% for post in posts %}
+        <div>
+            <h3>{{ post.title }}</h3>
+           <p> <span class="date"> {{ post.created|date:"SHORT_DATE_FORMAT" }}</span>{{ post.content|truncatewords:"5" }} <a href="/blog/{{post.id}}">Leer más</a></p>
+        </div>
+        {% endfor %}
+{% endblock %}
